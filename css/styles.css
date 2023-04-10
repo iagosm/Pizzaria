@@ -145,3 +145,54 @@ footer {
     justify-content: center;
     font-weight: bold;
 }
+
+/* Responsivo */
+
+@media (max-width: 425px){
+
+    #main-banner {
+        background-position-y: 0;
+    }
+
+    #main-banner h1 {
+        padding: 10px;
+    }
+
+    #main-container {
+        margin-bottom: 0;
+    }
+
+    #main-container .container {
+        padding: 10px;
+    }
+
+    .form-group .btn.btn-primary {
+        width: 100%;
+        height: 50px;
+        margin-top: 30px;
+        text-transform: uppercase;
+    }
+
+    .table-container {
+        padding: 0;
+    }
+
+    .table td, table th {
+        padding: 0.5 rem;
+    }
+
+    th span {
+        display: none;
+    }
+
+    .table thead th:nth-child(5),
+    .table thead th:nth-child(6) {
+        display: none;
+    }
+
+    .table tbody td:nth-child(5),
+    .table tbody td:nth-child(6) {
+        display: none;
+    }
+
+}

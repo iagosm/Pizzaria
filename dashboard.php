@@ -21,19 +21,26 @@
               </tr>
             </thead>
             <tbody>
+              <?php foreach($pizzas as $pizza): ?>
               <tr>
-                <td>#1</td>
-                <td>#1</td>
-                <td>#1</td>
-                <td>#1</td>
+                <td><?= $pizza["id"] ?></td>
+                <td><?= $pizza["borda"] ?></td>
+                <td><?= $pizza["massa"] ?></td>
+                <td>
+                  <ul>
+                    <?php foreach($pizza["sabores"] as $sabor): ?>
+                    <li><?= $sabor?></li>  
+                    <?php endforeach; ?>
+                  </ul>
+                </td>
                 <td>
                 <form action="process/orders.php" class="form-group update-form" method="POST">
                   <input type="hidden" name="type" value="update">
-                  <input type="hidden" name="id" value="1">
+                  <input type="hidden" name="id" value="<?= $pizza["id"] ?>">
                   <select name="status" id="status" class="form-control status-input">
-                      <option value="">Entrega</option>
-                      <option value="">Entrega</option>
-                      <option value="">Entrega</option>
+                      <?php foreach($status as $statu): ?>
+                        <option value="<?=$statu["id"]?>" <?php echo ($statu["id"] == $pizza["status"]) ? "selected" : "" ?>> <?= $statu["tipo"]?></option>
+                      <?php endforeach; ?>  
                   </select>
                     <button type="submit" class="update-btn">
                         <i class="fas fa-sync-alt"></i>
@@ -43,13 +50,14 @@
                 <td>
                   <form action="process/orders.php" method="POST">
                   <input type="hidden" name="type" value="delete">
-                  <input type="hidden" name="id" value="1">
+                  <input type="hidden" name="id" value="<?= $pizza["id"]?>">
                     <button type="submit" class="delete-btn">
                           <i class="fas fa-times"></i>
                     </button>
                   </form>
                 </td>
-              </tr>
+              </tr> 
+              <?php endforeach; ?>
             </tbody>
         </table>
       </div>
